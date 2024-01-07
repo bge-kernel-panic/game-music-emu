@@ -1,11 +1,10 @@
 libgme.so.0 libgme0 #MINVER#
 * Build-Depends-Package: libgme-dev
- (c++|optional|arch-bits=32)"std::vector<short, std::allocator<short> >* std::__do_uninit_fill_n<std::vector<short, std::allocator<short> >*, unsigned int, std::vector<short, std::allocator<short> > >(std::vector<short, std::allocator<short> >*, unsigned int, std::vector<short, std::allocator<short> > const&)@Base" 0.6.3
- (c++|optional|arch-bits=64)"std::vector<short, std::allocator<short> >* std::__do_uninit_fill_n<std::vector<short, std::allocator<short> >*, unsigned long, std::vector<short, std::allocator<short> > >(std::vector<short, std::allocator<short> >*, unsigned long, std::vector<short, std::allocator<short> > const&)@Base" 0.6.3
- (c++|optional|regex)"std::vector<short, std::allocator<short> >::_M_default_append\(unsigned (int|long)\)@Base" 0.6.3
+ gme_autoload_playback_limit@Base 0.6.4-1
  gme_ay_type@Base 0.6.3
  gme_clear_playlist@Base 0.6.0
  gme_delete@Base 0.5.5
+ gme_disable_echo@Base 0.6.4-1
  gme_enable_accuracy@Base 0.6.0
  gme_equalizer@Base 0.5.5
  gme_free_info@Base 0.5.5
@@ -32,12 +31,14 @@ libgme.so.0 libgme0 #MINVER#
  gme_open_data@Base 0.5.5
  gme_open_file@Base 0.5.5
  gme_play@Base 0.5.5
+ gme_rsn_type@Base 0.6.4-1
  gme_sap_type@Base 0.6.3
  gme_seek@Base 0.5.5
  gme_seek_samples@Base 0.6.1
  gme_set_autoload_playback_limit@Base 0.6.3
  gme_set_equalizer@Base 0.5.5
  gme_set_fade@Base 0.5.5
+ gme_set_fade_msecs@Base 0.6.4-1
  gme_set_stereo_depth@Base 0.5.5
  gme_set_tempo@Base 0.5.5
  gme_set_user_cleanup@Base 0.5.5
