@@ -1,7 +1,7 @@
 #include "Nes_Vrc7_Apu.h"
 
 extern "C" {
-#include "ext/emu2413.h"
+#include "emu2413/emu2413.h"
 }
 
 #include <string.h>
@@ -23,7 +23,7 @@ Nes_Vrc7_Apu::Nes_Vrc7_Apu()
 blargg_err_t Nes_Vrc7_Apu::init()
 {
 	CHECK_ALLOC( opll = OPLL_new( 3579545, 3579545 / 72 ) );
-	OPLL_SetChipMode((OPLL *) opll, 1);
+	OPLL_setChipMode((OPLL *) opll, 1);
 	OPLL_setPatch((OPLL *) opll, vrc7_inst);
 
 	set_output( 0 );
@@ -170,14 +170,14 @@ void Nes_Vrc7_Apu::run_until( blip_time_t end_time )
 	blip_time_t time = next_time;
 	void* opll = this->opll; // cache
 	Blip_Buffer* const mono_output = mono.output;
-	e_int32 buffer [2];
-	e_int32* buffers[2] = {&buffer[0], &buffer[1]};
+	int32_t buffer [2];
+	int32_t* buffers[2] = {&buffer[0], &buffer[1]};
 	if ( mono_output )
 	{
 		// optimal case
 		do
 		{
-			OPLL_calc_stereo( (OPLL *) opll, buffers, 1, -1 );
+			OPLL_calcStereo( (OPLL *) opll, buffer );
 			int amp = buffer [0] + buffer [1];
 			int delta = amp - mono.last_amp;
 			if ( delta )
@@ -191,16 +191,17 @@ void Nes_Vrc7_Apu::run_until( blip_time_t end_time )
 	}
 	else
 	{
+		int32_t temp[2];
 		mono.last_amp = 0;
 		do
 		{
-			OPLL_advance( (OPLL *) opll );
+			OPLL_calcStereo( (OPLL *) opll, temp);
 			for ( int i = 0; i < osc_count; ++i )
 			{
 				Vrc7_Osc& osc = oscs [i];
 				if ( osc.output )
 				{
-					OPLL_calc_stereo( (OPLL *) opll, buffers, 1, i );
+					OPLL_calcStereo( (OPLL *) opll, buffer );
 					int amp = buffer [0] + buffer [1];
 					int delta = amp - osc.last_amp;
 					if ( delta )
