@@ -6,9 +6,7 @@
 #include "Ym2413_Emu.h"
 
 #include <assert.h>
-// include the C file directly - the correct way to do this would be to link the C file
-// in but I don't know cmake that well :(
-#include "emu2413/emu2413.c"
+#include "emu2413/emu2413.h"
 
 // This class helps forcing initialization of the lookup tables before
 // anything starts.
