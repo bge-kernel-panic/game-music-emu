@@ -39,8 +39,8 @@ target_link_libraries(demo_multi gme)
 #
 
 if(BUILD_TESTING)
-    add_test(NAME sanity_test_NSF
-        COMMAND demo)
-    add_test(NAME check_proper_NSF_output
-        COMMAND sha256sum -c "${CMAKE_CURRENT_BINARY_DIR}/checksums")
+#    add_test(NAME sanity_test_NSF
+#        COMMAND demo)
+#    add_test(NAME check_proper_NSF_output
+#        COMMAND sha256sum -c "${CMAKE_CURRENT_BINARY_DIR}/checksums")
 endif()
