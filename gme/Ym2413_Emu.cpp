@@ -10,6 +10,27 @@
 // in but I don't know cmake that well :(
 #include "emu2413/emu2413.c"
 
+// This class helps forcing initialization of the lookup tables before
+// anything starts.
+class Initializer
+{
+	Initializer(const Initializer& rhs);
+	Initializer& operator=(const Initializer& rhs);
+public:
+	Initializer()
+	{
+		OPLL* data = OPLL_new(0, 0);
+		// immediately delete so we reclaim the extra memory used
+		// if this causes problems however consider moving this
+		// into the destructor and turning `data` to a member variable.
+		if (data)
+		{
+			OPLL_delete(data);
+		}
+	}
+};
+
+// actual implementation
 Ym2413_Emu::~Ym2413_Emu()
 {
 	if ( opll )
@@ -20,6 +41,9 @@ Ym2413_Emu::~Ym2413_Emu()
 
 Ym2413_Emu::Ym2413_Emu()
 {
+	// Meyer singleton pattern - since the constructor is guaranteed to be called
+	// only once this will ensure tables are computed only once
+        static Initializer initializer;
 	opll = 0;
 }
 
