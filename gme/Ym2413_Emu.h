@@ -4,6 +4,8 @@
 #ifndef YM2413_EMU_H
 #define YM2413_EMU_H
 
+#include "emu2413/emu2413.h"
+
 class Ym2413_Emu  {
 	OPLL* opll;
 public:
