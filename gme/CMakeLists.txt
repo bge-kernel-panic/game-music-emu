@@ -167,8 +167,8 @@ if(USE_GME_NSF OR USE_GME_NSFE)
                 Nes_Fds_Apu.h
                 Nes_Vrc7_Apu.cpp
                 Nes_Vrc7_Apu.h
-                ext/emu2413.c
-                ext/emu2413.h
+                emu2413/emu2413.c
+                emu2413/emu2413.h
                 ext/panning.c
                 ext/panning.h
                 ext/emutypes.h
