@@ -172,7 +172,7 @@ void Nes_Vrc7_Apu::run_until( blip_time_t end_time )
 	Blip_Buffer* const mono_output = mono.output;
 	int32_t buffer [2];
 	int32_t* buffers[2] = {&buffer[0], &buffer[1]};
-	if ( mono_output )
+	//	if ( mono_output )
 	{
 		// optimal case
 		do
@@ -189,7 +189,7 @@ void Nes_Vrc7_Apu::run_until( blip_time_t end_time )
 		}
 		while ( time < end_time );
 	}
-	else
+	/*	else
 	{
 		int32_t temp[2];
 		mono.last_amp = 0;
@@ -214,6 +214,6 @@ void Nes_Vrc7_Apu::run_until( blip_time_t end_time )
 			time += period;
 		}
 		while ( time < end_time );
-	}
+		}*/
 	next_time = time;
 }
