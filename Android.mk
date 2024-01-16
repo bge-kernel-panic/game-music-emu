@@ -102,7 +102,7 @@ LOCAL_SRC_FILES := \
 	gme/Ym2612_Nuked.cpp \
 	gme/Ym2612_GENS.cpp \
 	gme/Ym2612_MAME.cpp \
-	gme/ext/emu2413.c \
+        emu2413/emu2413.c \
 	gme/ext/panning.c \
 	gme/gme.cpp
 
